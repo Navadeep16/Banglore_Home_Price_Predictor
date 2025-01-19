@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bangalore Home Price Predictor</title>
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Bangalore Home Price Predictor</h1>
+    <form id="predict-form">
+      <div class="form-group">
+        <label for="area">Area (Square Feet):</label>
+        <input type="number" id="area" placeholder="Enter area in square feet" required>
+      </div>
+      <div class="form-group">
+        <label for="bhk">BHK:</label>
+        <select id="bhk">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="bath">Bath:</label>
+        <select id="bath">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <select id="location">
+          <option value="">Select a Location</option>
+          {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit">Estimate Price</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <!-- Link to JS -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
